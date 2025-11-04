@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpxw2q40fo3j1"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sgmub"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ygwsv"]
+size = Vector3(1.7633972, 0.1, 1.1964111)
+
+[node name="ChoppingBoard" type="Node3D" groups=["chopping_board"]]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.9, 0, 0, 0, 1, 0, 0, 0, 0.6, 0.2, 0, 0.20000005)
+mesh = SubResource("PlaneMesh_sgmub")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20759583, 0.050011396, 0.20201421)
+shape = SubResource("BoxShape3D_ygwsv")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(-1.1313341e-08, 0.9659258, -0.25881907, 4.222196e-08, 0.25881907, 0.9659258, 1, 0, -4.371139e-08, 0, 0.29999995, 0.20000005)
+text = "Put Items"

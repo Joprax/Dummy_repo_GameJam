@@ -1,0 +1,111 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqu0t6q8pgs7x"]
+
+[ext_resource type="PackedScene" uid="uid://bukshjsp3k8n4" path="res://scenes/Flour.tscn" id="1_drdf4"]
+[ext_resource type="Script" uid="uid://citj50r813khv" path="res://Scripts/shop_ui.gd" id="1_s27q3"]
+[ext_resource type="PackedScene" uid="uid://dcwg7pgy3pb18" path="res://scenes/item_oil.tscn" id="2_s27q3"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 3
+
+[node name="Panel" type="Panel" parent="." groups=["shop_ui"]]
+custom_minimum_size = Vector2(500, 500)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s27q3")
+
+[node name="title" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 210.0
+offset_right = 250.0
+offset_bottom = 23.0
+scale = Vector2(1.94, 1.94)
+text = "Shop"
+
+[node name="MoneyLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 393.37
+offset_top = 11.93
+offset_right = 446.37024
+offset_bottom = 60.93
+scale = Vector2(1.505, 1.505)
+text = "Money
+"
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 33.145
+offset_top = 408.625
+offset_right = 119.58501
+offset_bottom = 439.625
+scale = Vector2(1.845, 1.845)
+text = "Buy"
+
+[node name="Button2" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 313.8
+offset_top = 408.625
+offset_right = 400.24017
+offset_bottom = 439.625
+scale = Vector2(1.845, 1.845)
+text = "Close"
+
+[node name="CartButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 14.94
+offset_top = 14.01
+offset_right = 76.485
+offset_bottom = 45.010002
+scale = Vector2(0.975, 0.975)
+text = "Cart"
+
+[node name="GridContainer" type="GridContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 19.999847
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="ItemCard(Flour)" parent="Panel" instance=ExtResource("1_drdf4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 42.195
+offset_top = 76.57
+offset_right = 42.195
+offset_bottom = 76.57
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="ItemCard(Oil)" parent="Panel" groups=["shop_ui"] instance=ExtResource("2_s27q3")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 141.215
+offset_top = 77.73
+offset_right = 141.215
+offset_bottom = 77.73
+grow_horizontal = 1
+grow_vertical = 1

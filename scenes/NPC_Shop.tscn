@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://by0revmprat7w"]
+
+[ext_resource type="Script" uid="uid://8utoywqrug0s" path="res://Scripts/NPC_Shop.gd" id="1_duiaw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rt23e"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_duiaw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rt23e"]
+size = Vector3(3.8, 1, 5.7000003)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["npc_shop"]]
+script = ExtResource("1_duiaw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("CapsuleShape3D_rt23e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 5.3, 0)
+mesh = SubResource("CapsuleMesh_duiaw")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CharacterBody3D/MeshInstance3D"]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.72, 0.26, 0.38, 0)
+
+[node name="Area3D" type="Area3D" parent="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.6, -0.15000021)
+shape = SubResource("BoxShape3D_rt23e")

@@ -1,0 +1,78 @@
+[gd_scene load_steps=13 format=3 uid="uid://dduhmjo2xakhw"]
+
+[ext_resource type="PackedScene" uid="uid://r6pxs1i4742r" path="res://scenes/Npc.tscn" id="1_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://Assets/proto_controller/proto_controller.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://bxvttf3bnsrh7" path="res://scenes/Foodcart.tscn" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://cpxw2q40fo3j1" path="res://scenes/chopping_board.tscn" id="5_85g3d"]
+[ext_resource type="PackedScene" uid="uid://by0revmprat7w" path="res://scenes/NPC_Shop.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://bipd17kasuhud" path="res://scenes/coating.tscn" id="6_choun"]
+[ext_resource type="PackedScene" uid="uid://ds17c5f7xfc43" path="res://scenes/frying_pan.tscn" id="7_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://g8vx13q41hp3" path="res://scenes/sign.tscn" id="8_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://dqu0t6q8pgs7x" path="res://scenes/Shop_UI.tscn" id="9_85g3d"]
+[ext_resource type="PackedScene" uid="uid://dth3fvb0fq17g" path="res://scenes/crosshair.tscn" id="10_choun"]
+[ext_resource type="PackedScene" uid="uid://b3cvg1ymfoset" path="res://scenes/food_cart_ui.tscn" id="11_ya4ey"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_sgp6g"]
+vertices = PackedVector3Array(23.733212, 0.77025545, 4.230671, 23.733212, 0.77025545, -4.019329, 21.733212, 0.77025545, -4.269329, 21.733212, 0.77025545, 4.480671, -22.766788, 0.77025545, -22.01933, -22.766788, 0.77025545, 21.98067, 21.733212, 0.77025545, 21.98067, 21.733212, 0.77025545, -22.01933, 39.98321, 0.77025545, -4.019329, 39.98321, 0.77025545, 4.230671, 41.98321, 0.77025545, 4.480671, 41.98321, 0.77025545, -4.269329, 86.233215, 0.77025545, 21.98067, 86.233215, 0.77025545, -22.01933, 41.98321, 0.77025545, 21.98067, 41.98321, 0.77025545, -22.01933)
+polygons = [PackedInt32Array(0, 3, 1), PackedInt32Array(1, 3, 2), PackedInt32Array(3, 5, 2), PackedInt32Array(2, 5, 4), PackedInt32Array(3, 6, 5), PackedInt32Array(4, 7, 2), PackedInt32Array(8, 11, 9), PackedInt32Array(9, 11, 10), PackedInt32Array(10, 11, 12), PackedInt32Array(12, 11, 13), PackedInt32Array(12, 14, 10), PackedInt32Array(11, 15, 13), PackedInt32Array(1, 8, 0), PackedInt32Array(0, 8, 9)]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-2.1855694e-08, -0.8660254, 0.50000006, -3.7855173e-08, 0.50000006, 0.8660254, -1, -1.7763568e-15, -4.371139e-08, 66, 34.4, 0)
+
+[node name="Npc" parent="." instance=ExtResource("1_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.9, 0.5, -1.3000002)
+
+[node name="HUD" parent="." instance=ExtResource("10_choun")]
+
+[node name="Player2" parent="." instance=ExtResource("1_o5qli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1, 1.7, -1.6)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="Walls" type="CSGBox3D" parent="CSGCombiner3D"]
+
+[node name="Foodcart" parent="CSGCombiner3D" instance=ExtResource("2_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.300001, 0.29999995, 1.5)
+
+[node name="ChoppingBoard" parent="CSGCombiner3D" instance=ExtResource("5_85g3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.1000001, -1.3000001)
+
+[node name="Coating" parent="CSGCombiner3D" instance=ExtResource("6_choun")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -18.699999, 2.3000002, 4.5)
+
+[node name="FryingPan" parent="CSGCombiner3D" instance=ExtResource("7_ya4ey")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -18.7, 3.9, 2.1000001)
+
+[node name="Sign" parent="CSGCombiner3D" instance=ExtResource("8_eb6dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.000002, 3.3000002, 4.1)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_sgp6g")
+
+[node name="Floor" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(20.11229, 0, 0, 0, 1, 0, 0, 0, 45.03866, -0.6257324, 0.24559724, 0)
+use_collision = true
+size = Vector3(2.2514648, 0.4506836, 1)
+
+[node name="Floor2" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(20.11229, 0, 0, 0, 1, 0, 0, 0, 45.03866, 64.17427, 0.24559724, 0)
+use_collision = true
+size = Vector3(2.2514648, 0.4506836, 1)
+
+[node name="Floor3" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(11.061759, 0, 0, 0, 1, 0, 0, 0, 9.007731, 31.607077, 0.24559724, 0)
+use_collision = true
+size = Vector3(1.9, 0.4506836, 1)
+
+[node name="NPC_Shop" parent="." instance=ExtResource("5_tbgi4")]
+transform = Transform3D(-0.8660254, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.8660254, 17.800001, 0.5, -18.300001)
+
+[node name="Shop_UI" parent="." instance=ExtResource("9_85g3d")]
+offset = Vector2(-130.59, -71.455)
+scale = Vector2(1.24, 1.21)
+transform = Transform2D(1.24, 0, 0, 1.21, -130.59, -71.455)
+
+[node name="Food_cart_UI" parent="." instance=ExtResource("11_ya4ey")]

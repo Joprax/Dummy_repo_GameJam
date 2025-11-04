@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxvttf3bnsrh7"]
+
+[ext_resource type="Script" uid="uid://chyplbfua4bfq" path="res://scenes/foodcart.gd" id="1_6137a"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ue1hr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6137a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t062r"]
+size = Vector3(13.6, 0.1, 17.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6137a"]
+size = Vector3(2.6000001, 3.3, 6.7000003)
+
+[node name="Foodcart" type="Node3D" groups=["food_cart"]]
+script = ExtResource("1_6137a")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.5, 0, 0, 0, 2.895, 0, 0, 0, 6.816, 0, 1.3000001, 0)
+mesh = SubResource("BoxMesh_ue1hr")
+surface_material_override/0 = SubResource("StandardMaterial3D_6137a")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6, 0.29999995, 0.20000005)
+shape = SubResource("BoxShape3D_t062r")
+
+[node name="FrontSpot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9802322e-08, 1.15, -0.05000007)
+shape = SubResource("BoxShape3D_6137a")

@@ -1,0 +1,159 @@
+[gd_scene format=3 uid="uid://b3cvg1ymfoset"]
+
+[node name="Food_cart_UI" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="." groups=["shop_ui"]]
+custom_minimum_size = Vector2(500, 500)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 32.999985
+offset_top = 71.00001
+offset_right = 103.999985
+offset_bottom = 94.00001
+scale = Vector2(1.94, 1.94)
+text = "Inventory"
+
+[node name="BoardLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 327.0
+offset_top = -2.0
+offset_right = 423.0
+offset_bottom = 47.0
+scale = Vector2(1.505, 1.505)
+text = "Put in board"
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 8.000011
+offset_top = 433.0
+offset_right = 78.46071
+offset_bottom = 464.4363
+scale = Vector2(1.845, 1.845)
+text = "Done"
+
+[node name="Button2" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 433.0
+offset_right = 206.87262
+offset_bottom = 464.0
+scale = Vector2(1.845, 1.845)
+text = "Close"
+
+[node name="PanLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 166.0
+offset_right = 432.0
+offset_bottom = 215.0
+scale = Vector2(1.505, 1.505)
+text = "Put in pan"
+
+[node name="BowlLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 338.0
+offset_top = 324.0
+offset_right = 434.0
+offset_bottom = 373.0
+scale = Vector2(1.505, 1.505)
+text = "Put in bowl"
+
+[node name="ColorRect" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 131.0
+offset_right = 201.0
+offset_bottom = 374.0
+color = Color(1, 1, 1, 0.21568628)
+
+[node name="ItemsCategory" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -118.0
+offset_right = 203.0
+offset_bottom = 125.0
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Panel/ItemsCategory"]
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 32.0
+offset_right = 494.0
+offset_bottom = 165.0
+color = Color(1, 1, 1, 0.21568628)
+
+[node name="ColorRect3" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_left = 303.0
+offset_top = 196.0
+offset_right = 495.0
+offset_bottom = 329.0
+color = Color(1, 1, 1, 0.21568628)
+
+[node name="ColorRect4" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_left = 303.0
+offset_top = 361.0
+offset_right = 495.0
+offset_bottom = 494.0
+color = Color(1, 1, 1, 0.21568628)
+
+[node name="BoardCategory" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 303.0
+offset_top = -218.0
+offset_right = 496.0
+offset_bottom = -85.0
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Panel/BoardCategory"]
+layout_mode = 2
+
+[node name="PanCategory" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 304.0
+offset_top = -53.0
+offset_right = 497.0
+offset_bottom = 80.0
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Panel/PanCategory"]
+layout_mode = 2
+
+[node name="PanCategory2" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 304.0
+offset_top = 111.0
+offset_right = 497.0
+offset_bottom = 244.0
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Panel/PanCategory2"]
+layout_mode = 2

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://r6pxs1i4742r"]
+
+[ext_resource type="Script" uid="uid://bxvlqp185ggyn" path="res://Scripts/character_body_3d.gd" id="1_c4qij"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0bq7j"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_c4qij"]
+
+[node name="Npc" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["npc"]]
+script = ExtResource("1_c4qij")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+shape = SubResource("CapsuleShape3D_0bq7j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(1.54, 0, 0, 0, 2.464, 0, 0, 0, 1.6, 0, 3.1000001, 5.9604645e-08)
+mesh = SubResource("CapsuleMesh_c4qij")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D"]
