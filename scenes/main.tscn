@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dduhmjo2xakhw"]
+[gd_scene load_steps=15 format=3 uid="uid://dduhmjo2xakhw"]
 
 [ext_resource type="PackedScene" uid="uid://r6pxs1i4742r" path="res://scenes/Npc.tscn" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://Assets/proto_controller/proto_controller.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://85liquc43bf" path="res://scenes/inventory_ui.tscn" id="1_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://bxvttf3bnsrh7" path="res://scenes/Foodcart.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://cpxw2q40fo3j1" path="res://scenes/chopping_board.tscn" id="5_85g3d"]
 [ext_resource type="PackedScene" uid="uid://by0revmprat7w" path="res://scenes/NPC_Shop.tscn" id="5_tbgi4"]
@@ -10,13 +11,17 @@
 [ext_resource type="PackedScene" uid="uid://g8vx13q41hp3" path="res://scenes/sign.tscn" id="8_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://dqu0t6q8pgs7x" path="res://scenes/Shop_UI.tscn" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://dth3fvb0fq17g" path="res://scenes/crosshair.tscn" id="10_choun"]
-[ext_resource type="PackedScene" uid="uid://b3cvg1ymfoset" path="res://scenes/food_cart_ui.tscn" id="11_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://o067korwkj5c" path="res://scenes/sison_shop_ui.tscn" id="12_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://dcmehg84hlvyc" path="res://scenes/pan_ui.tscn" id="13_trceg"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_sgp6g"]
 vertices = PackedVector3Array(23.733212, 0.77025545, 4.230671, 23.733212, 0.77025545, -4.019329, 21.733212, 0.77025545, -4.269329, 21.733212, 0.77025545, 4.480671, -22.766788, 0.77025545, -22.01933, -22.766788, 0.77025545, 21.98067, 21.733212, 0.77025545, 21.98067, 21.733212, 0.77025545, -22.01933, 39.98321, 0.77025545, -4.019329, 39.98321, 0.77025545, 4.230671, 41.98321, 0.77025545, 4.480671, 41.98321, 0.77025545, -4.269329, 86.233215, 0.77025545, 21.98067, 86.233215, 0.77025545, -22.01933, 41.98321, 0.77025545, 21.98067, 41.98321, 0.77025545, -22.01933)
 polygons = [PackedInt32Array(0, 3, 1), PackedInt32Array(1, 3, 2), PackedInt32Array(3, 5, 2), PackedInt32Array(2, 5, 4), PackedInt32Array(3, 6, 5), PackedInt32Array(4, 7, 2), PackedInt32Array(8, 11, 9), PackedInt32Array(9, 11, 10), PackedInt32Array(10, 11, 12), PackedInt32Array(12, 11, 13), PackedInt32Array(12, 14, 10), PackedInt32Array(11, 15, 13), PackedInt32Array(1, 8, 0), PackedInt32Array(0, 8, 9)]
 
 [node name="Node3D" type="Node3D"]
+
+[node name="Inventory_UI" parent="." instance=ExtResource("1_ya4ey")]
+script = null
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-2.1855694e-08, -0.8660254, 0.50000006, -3.7855173e-08, 0.50000006, 0.8660254, -1, -1.7763568e-15, -4.371139e-08, 66, 34.4, 0)
@@ -75,4 +80,6 @@ offset = Vector2(-130.59, -71.455)
 scale = Vector2(1.24, 1.21)
 transform = Transform2D(1.24, 0, 0, 1.21, -130.59, -71.455)
 
-[node name="Food_cart_UI" parent="." instance=ExtResource("11_ya4ey")]
+[node name="SisonShop_UI" parent="." instance=ExtResource("12_eb6dy")]
+
+[node name="Foodcart_UI" parent="." instance=ExtResource("13_trceg")]

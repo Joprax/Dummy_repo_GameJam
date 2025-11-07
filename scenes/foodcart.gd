@@ -7,10 +7,12 @@ extends Node3D
 var current_customer = null
 var is_serving = false
 var time_speed: float = 0.5  # Game minutes per real second
+var player_in_range = false  # Added for player interaction
 
 func _ready():
 	add_to_group("food_cart")
 	area.body_entered.connect(_on_body_entered)
+	area.body_exited.connect(_on_body_exited)  # Added for player interaction
 
 func _process(delta):
 	if GameManager.is_cart_open:
@@ -25,6 +27,30 @@ func _on_body_entered(body):
 	if body.is_in_group("npc") and GameManager.is_cart_open:
 		if current_customer == null and GameManager.cooked_foods > 0:
 			body.request_service(self)
+	
+	# Added for player interaction
+	if body.is_in_group("player"):
+		player_in_range = true
+		print("[E] to open Foodcart UI")
+
+func _on_body_exited(body):
+	# Added for player interaction
+	if body.is_in_group("player"):
+		player_in_range = false
+
+func _unhandled_input(event):
+	# Added for player interaction
+	if player_in_range and event.is_action_pressed("interact"):
+		open_foodcart_ui()
+		get_viewport().set_input_as_handled()
+
+func open_foodcart_ui():
+	# Find the Foodcart UI
+	var foodcart_ui = get_tree().get_first_node_in_group("foodcart_ui")
+	if foodcart_ui:
+		foodcart_ui.show_foodcart()
+	else:
+		print("Foodcart_UI not found!")
 
 func start_serving(npc):
 	if current_customer == null and GameManager.cooked_foods > 0:
@@ -43,3 +69,4 @@ func finish_serving():
 
 func get_front_position() -> Vector3:
 	return front_spot.global_position
+	

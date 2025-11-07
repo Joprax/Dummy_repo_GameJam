@@ -1,0 +1,86 @@
+[gd_scene load_steps=4 format=3 uid="uid://o067korwkj5c"]
+
+[ext_resource type="Script" uid="uid://bbuxy0gvvh0lg" path="res://scenes/SisonShop/panel.gd" id="1_3dnj1"]
+[ext_resource type="Texture2D" uid="uid://bld1bw7tn3111" path="res://OildaGreat.svg" id="1_y1pu2"]
+[ext_resource type="Texture2D" uid="uid://cmvssmjfrv51o" path="res://FlourdaGreat.svg" id="3_ivfdv"]
+
+[node name="SisonShop_UI" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="." groups=["sison_shop_ui"]]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 33.0
+offset_top = -202.0
+offset_right = 434.0
+offset_bottom = 201.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3dnj1")
+
+[node name="GridContainer" type="GridContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 74.0
+offset_right = 350.0
+offset_bottom = 341.0
+columns = 4
+
+[node name="ItemOil" type="Panel" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Panel/GridContainer/ItemOil"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_y1pu2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ItemFlour" type="Panel" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Panel/GridContainer/ItemFlour"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ivfdv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Close" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 347.0
+offset_top = 20.0
+offset_right = 383.0
+offset_bottom = 56.0
+text = "X"
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 27.0
+offset_right = 215.0
+offset_bottom = 50.0
+text = "Shop ni Sison da Great"
+
+[node name="MoneyLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 28.0
+offset_right = 280.0
+offset_bottom = 51.0
+text = "money"
+
+[connection signal="gui_input" from="Panel/GridContainer/ItemOil" to="Panel" method="_on_item_oil_gui_input"]
+[connection signal="gui_input" from="Panel/GridContainer/ItemFlour" to="Panel" method="_on_item_flour_gui_input"]
