@@ -2,7 +2,6 @@
 extends CharacterBody3D
 
 @onready var area = $Area3D
-@export var shop_ui_node: NodePath 
 
 var player_in_range = false
 
@@ -26,9 +25,12 @@ func _unhandled_input(event):
 		get_viewport().set_input_as_handled()
 
 func open_shop():
-	# Find the 3D shop UI
-	var shop_ui = get_tree().get_first_node_in_group("shop_ui")
+	var shop_ui = get_tree().get_first_node_in_group("sison_shop_ui")
 	if shop_ui:
 		shop_ui.show_shop()
+		# Pause player input to prevent camera movement
+		get_tree().root.set_disable_input(true)
+		get_tree().root.set_disable_input(false)
 	else:
-		print("Shop UI not found!")
+		print("SisonShop_UI not found!")
+		

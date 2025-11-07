@@ -48,6 +48,7 @@ var mouse_captured : bool = false
 var look_rotation : Vector2
 var move_speed : float = 0.0
 var freeflying : bool = false
+var ignore_next_mouse_motion : bool = false #SISON CONIDTION
 
 ## IMPORTANT REFERENCES
 @onready var head: Node3D = $Head
@@ -111,20 +112,25 @@ func _input(event: InputEvent) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Look around
-	if mouse_captured and event is InputEventMouseMotion:
-		rotate_look(event.relative)
 	
-	# Look around
+	#SISON CONIDTION
+	var inventory = get_tree().get_first_node_in_group("inventory_ui")
+	if inventory and inventory.visible:
+		return 
+	#SISON CONIDTION
 	if mouse_captured and event is InputEventMouseMotion:
+		if ignore_next_mouse_motion:
+			ignore_next_mouse_motion = false
+			return
 		rotate_look(event.relative)
-	
+	#SISON CONIDTION
 	# Toggle freefly mode
 	if can_freefly and Input.is_action_just_pressed(input_freefly):
 		if not freeflying:
 			enable_freefly()
 		else:
 			disable_freefly()
-	
+	#SISON CONIDTION
 	if event.is_action_pressed("interact"):
 		var target = get_looked_at_interactable()
 		if target:
@@ -208,7 +214,7 @@ func disable_freefly():
 func capture_mouse():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	mouse_captured = true
-
+	ignore_next_mouse_motion = true #SISON CONDITION
 
 func release_mouse():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

@@ -1,0 +1,230 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcmehg84hlvyc"]
+
+[ext_resource type="Script" uid="uid://cinjeyquq4xgw" path="res://scenes/Foodcart/panel.gd" id="1_gguna"]
+[ext_resource type="Script" uid="uid://wg6lbde7wf7m" path="res://scenes/Foodcart/item_slot.gd" id="2_gguna"]
+
+[node name="Foodcart_UI" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 14.0
+offset_top = -198.0
+offset_right = 351.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gguna")
+
+[node name="GridContainerPan" type="GridContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 78.0
+offset_right = 307.0
+offset_bottom = 204.0
+theme_override_constants/h_separation = 7
+theme_override_constants/v_separation = 7
+columns = 5
+
+[node name="ItemSlot" type="Panel" parent="Panel/GridContainerPan"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+script = ExtResource("2_gguna")
+
+[node name="Icon" type="TextureRect" parent="Panel/GridContainerPan/ItemSlot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Panel/GridContainerPan/ItemSlot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 41.0
+offset_top = 37.0
+offset_right = 60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[node name="GridContainerBowl" type="GridContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 237.0
+offset_right = 308.0
+offset_bottom = 363.0
+theme_override_constants/h_separation = 7
+theme_override_constants/v_separation = 7
+columns = 5
+
+[node name="ItemSlot" type="Panel" parent="Panel/GridContainerBowl"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+script = ExtResource("2_gguna")
+
+[node name="Icon" type="TextureRect" parent="Panel/GridContainerBowl/ItemSlot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Panel/GridContainerBowl/ItemSlot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = 37.0
+offset_right = 59.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[node name="GridContainerBoard" type="GridContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 78.0
+offset_right = 168.0
+offset_bottom = 358.0
+theme_override_constants/h_separation = 7
+theme_override_constants/v_separation = 39
+
+[node name="ItemSlot" type="Panel" parent="Panel/GridContainerBoard"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+script = ExtResource("2_gguna")
+
+[node name="Icon" type="TextureRect" parent="Panel/GridContainerBoard/ItemSlot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Panel/GridContainerBoard/ItemSlot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 41.0
+offset_top = 38.0
+offset_right = 60.0
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[node name="ItemSlot2" type="Panel" parent="Panel/GridContainerBoard"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+script = ExtResource("2_gguna")
+
+[node name="Icon" type="TextureRect" parent="Panel/GridContainerBoard/ItemSlot2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Panel/GridContainerBoard/ItemSlot2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 41.0
+offset_top = 38.0
+offset_right = 60.0
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[node name="LabelMain" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 17.0
+offset_right = 231.0
+offset_bottom = 63.0
+theme_override_font_sizes/font_size = 16
+text = "Food Cart"
+
+[node name="LabelBoard" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 52.0
+offset_right = 164.0
+offset_bottom = 98.0
+theme_override_font_sizes/font_size = 16
+text = "Board"
+
+[node name="LabelBoard" type="Label" parent="Panel/LabelBoard"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 161.0
+offset_right = 126.0
+offset_bottom = 207.0
+theme_override_font_sizes/font_size = 16
+text = "Board"
+
+[node name="LabelPan" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 53.0
+offset_right = 305.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 16
+text = "Pan"
+
+[node name="LabelBowl" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 212.0
+offset_right = 305.0
+offset_bottom = 258.0
+theme_override_font_sizes/font_size = 16
+text = "Bowl"
+
+[node name="Done" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 366.0
+offset_right = 300.0
+offset_bottom = 397.0
+text = "Done"
+
+[node name="Close" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 265.0
+offset_top = 18.0
+offset_right = 301.0
+offset_bottom = 49.0
+text = "X"
