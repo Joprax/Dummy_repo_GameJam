@@ -54,24 +54,62 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 		var item_type_to_transfer = data["item_type"]
 		var source_slot = data["source_slot"]
 		
-		# Transfer item from inventory to foodcart
-		if game_manager.use_ingredient(item_type_to_transfer):
-			# Successfully removed from inventory
-			_add_item_to_slot(item_type_to_transfer)
-			
-			# Update the source slot in inventory
-			if source_slot.has_method("_update_label"):
-				source_slot._update_label()
-			
-			# SPAWN 3D ITEM ON THE SPECIFIC COOKING STATION
-			_spawn_3d_item(item_type_to_transfer)
-			
-			print("Transferred %s to foodcart. Remaining in inventory: %d" % [
-				item_type_to_transfer, 
-				game_manager.ingredients.get(item_type_to_transfer, 0)
-			])
+		# Check if this slot already has an item
+		if item_type != "" and item_type != item_type_to_transfer:
+			# Slot has a different item - SWAP them
+			_swap_with_inventory(item_type_to_transfer, source_slot)
 		else:
-			print("No %s available to transfer" % item_type_to_transfer)
+			# Slot is empty or same item type - normal transfer
+			_transfer_from_inventory(item_type_to_transfer, source_slot)
+
+func _swap_with_inventory(new_item_type: String, source_slot):
+	# Store current item info
+	var current_item_type = item_type
+	var current_quantity = item_quantity
+	
+	# Remove current item from foodcart and add to inventory
+	game_manager.ingredients[current_item_type] = game_manager.ingredients.get(current_item_type, 0) + current_quantity
+	game_manager.emit_signal("ingredient_changed", current_item_type, game_manager.ingredients[current_item_type])
+	
+	# Remove new item from inventory and add to foodcart
+	if game_manager.use_ingredient(new_item_type):
+		# Set the new item in this slot
+		item_type = new_item_type
+		item_quantity = 1
+		icon.texture = _get_item_texture(new_item_type)
+		
+		# Update 3D items
+		_spawn_3d_item(new_item_type)
+		
+		# Update source slot in inventory
+		if source_slot.has_method("_update_label"):
+			source_slot._update_label()
+		
+		print("Swapped %s (to inventory) with %s (to foodcart)" % [current_item_type, new_item_type])
+	else:
+		print("Failed to swap items - not enough %s in inventory" % new_item_type)
+	
+	update_display()
+
+func _transfer_from_inventory(item_type_to_transfer: String, source_slot):
+	# Transfer item from inventory to foodcart
+	if game_manager.use_ingredient(item_type_to_transfer):
+		# Successfully removed from inventory
+		_add_item_to_slot(item_type_to_transfer)
+		
+		# Update the source slot in inventory
+		if source_slot.has_method("_update_label"):
+			source_slot._update_label()
+		
+		# SPAWN 3D ITEM ON THE SPECIFIC COOKING STATION
+		_spawn_3d_item(item_type_to_transfer)
+		
+		print("Transferred %s to foodcart. Remaining in inventory: %d" % [
+			item_type_to_transfer, 
+			game_manager.ingredients.get(item_type_to_transfer, 0)
+		])
+	else:
+		print("No %s available to transfer" % item_type_to_transfer)
 
 func _spawn_3d_item(item_type: String):
 	# Get the specific cooking station node from the main scene
@@ -184,7 +222,7 @@ func _add_item_to_slot(new_item_type: String):
 		# Same item type, increase quantity
 		item_quantity += 1
 	else:
-		# Different item type - replace
+		# Different item type - replace (this case should now be handled by _swap_with_inventory)
 		item_type = new_item_type
 		icon.texture = _get_item_texture(new_item_type)
 		item_quantity = 1
